@@ -105,8 +105,8 @@ data_scaled = StandardScaler().fit_transform(data)
 #### C. Configuring DBSCAN Parameters for Effective Outlier Detection
 
 Configuring DBSCAN involves setting two main parameters:
-- `eps`: The maximum distance between two samples for one to be considered as in the neighborhood of the other.
-- `min_samples`: The number of samples (or total weight) in a neighborhood for a point to be considered as a core point.
+ - **`eps`:** The maximum distance between two samples for one to be considered as in the neighborhood of the other.
+ - **`min_samples`:** The number of samples (or total weight) in a neighborhood for a point to be considered as a core point.
 
 ##### Code Example:
 
@@ -208,41 +208,4 @@ Anomaly detection is a powerful tool for uncovering hidden patterns and irregula
 
 3. **Interpretation of DBSCAN Labels:**
    - Understanding the meaning of DBSCAN labels and differentiating between core points, border points, and noise.
-
-
-```{python}
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.cluster import DBSCAN
-from sklearn.datasets import make_blobs
-
-# Generate sample data
-data, labels = make_blobs(n_samples=500, centers=2, cluster_std=0.40, random_state=0)
-outliers = np.array([[4, 2]])
-
-# Add outliers to the data
-data = np.concatenate([data, outliers], axis=0)
-
-# Apply DBSCAN
-dbscan = DBSCAN(eps=0.3, min_samples=5)
-clusters = dbscan.fit_predict(data)
-
-# Label outliers as True (1) and non-outliers as False (0)
-outlier_labels = (clusters == -1)
-
-# Visualize the results
-scatter = plt.scatter(data[:, 0], data[:, 1], c=outlier_labels, cmap='viridis')
-plt.title('DBSCAN Anomaly Detection')
-plt.xlabel('Feature 1')
-plt.ylabel('Feature 2')
-
-# Create a legend with specified colors
-legend_labels = ['Non-Outliers', 'Outliers']
-legend_handles = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=scatter.cmap(0.0), markersize=10),
-                  plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=scatter.cmap(1.0), markersize=10)]
-plt.legend(legend_handles, legend_labels)
-
-plt.show()
-```
-
 

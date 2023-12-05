@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Learning Out Loud Machine Learning - Understanding Classification Evaluation Metrics in Machine Learning</title>
+<title>ML_blogs - Understanding Classification Evaluation Metrics in Machine Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -73,11 +74,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 20,
   "language": {
     "search-no-results-text": "No results",
@@ -99,11 +100,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="fullcontent">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ML_blogs</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../warisk@vt.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/war_is11" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../www.linkedin.com/in/waris-khan-s" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
@@ -128,7 +169,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>Classification in machine learning is a type of supervised learning where the goal is to predict the categorical class labels of new instances based on past observations. The primary objective is to learn a mapping from input features to predefined output classes. This process involves training a model on a labeled dataset, where each data point is associated with a known class label.</p>
-<p>In classification, the algorithm learns to assign a label or category to input data based on its features. The output is a discrete class label, making it different from regression, where the goal is to predict a continuous numeric value. ### Common Applications of Classification Algorithms: 1. <strong>Email Spam Detection:</strong> Classify emails as either spam or not spam. 2. <strong>Image Recognition:</strong> Identify objects or patterns in images, such as recognizing digits in handwritten characters or detecting specific objects in photos. 3. <strong>Medical Diagnosis:</strong> Predict whether a patient has a particular disease based on symptoms and medical test results. 4. <strong>Credit Scoring:</strong> Assess the creditworthiness of an individual based on financial and personal information. 5. <strong>Fraud Detection:</strong> Identify fraudulent transactions in financial transactions or online activities.</p>
+<p>In classification, the algorithm learns to assign a label or category to input data based on its features. The output is a discrete class label, making it different from regression, where the goal is to predict a continuous numeric value.</p>
+<section id="common-applications-of-classification-algorithms" class="level3">
+<h3 class="anchored" data-anchor-id="common-applications-of-classification-algorithms">Common Applications of Classification Algorithms:</h3>
+<ol type="1">
+<li><strong>Email Spam Detection:</strong> Classify emails as either spam or not spam.</li>
+<li><strong>Image Recognition:</strong> Identify objects or patterns in images, such as recognizing digits in handwritten characters or detecting specific objects in photos.</li>
+<li><strong>Medical Diagnosis:</strong> Predict whether a patient has a particular disease based on symptoms and medical test results.</li>
+<li><strong>Credit Scoring:</strong> Assess the creditworthiness of an individual based on financial and personal information.</li>
+<li><strong>Fraud Detection:</strong> Identify fraudulent transactions in financial transactions or online activities.</li>
+</ol>
+</section>
 <section id="how-classification-models-work" class="level3">
 <h3 class="anchored" data-anchor-id="how-classification-models-work">How Classification Models Work:</h3>
 <ol type="1">
@@ -222,8 +273,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="explanation-of-roc-curve-and-its-components">Explanation of ROC Curve and Its Components:</h3>
 <p>The Receiver Operating Characteristic (ROC) curve is a graphical representation of a classification model’s ability to discriminate between positive and negative classes. It is created by plotting the True Positive Rate (Sensitivity) against the False Positive Rate at various threshold settings.</p>
 <ul>
-<li><p><strong>True Positive Rate (Sensitivity):</strong> The proportion of actual positive instances correctly classified as positive. It is calculated as $ $.</p></li>
-<li><p><strong>False Positive Rate:</strong> The proportion of actual negative instances incorrectly classified as positive. It is calculated as $ $.</p></li>
+<li><p><strong>True Positive Rate (Sensitivity):</strong> The proportion of actual positive instances correctly classified as positive. It is calculated as <span class="math display">\[ \frac{\text{TP}}{\text{TP} + \text{FN}}\]</span>.</p></li>
+<li><p><strong>False Positive Rate:</strong> The proportion of actual negative instances incorrectly classified as positive. It is calculated as <span class="math display">\[ \frac{\text{FP}}{\text{FP} + \text{TN}}\]</span>.</p></li>
 </ul>
 </section>
 <section id="interpretation-of-roc-curve" class="level3">
@@ -231,9 +282,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>The ROC curve helps visualize the trade-off between sensitivity and specificity at different classification thresholds.</li>
 <li>A diagonal line (the line of no-discrimination) represents a random classifier, while a curve above the diagonal indicates a better-than-random classifier.</li>
-<li>The Area Under the ROC Curve (AUC-ROC) summarizes the performance of the model, with a higher AUC indicating better discrimination. ### Interpretation of Precision-Recall Curve and Its Components: The Precision-Recall (PR) curve illustrates the trade-off between precision (positive predictive value) and recall (sensitivity) at different classification thresholds.</li>
-<li><strong>Precision:</strong> The proportion of predicted positives that are true positives. It is calculated as <span class="math inline">\(\frac{\text{TP}}{\text{TP} + \text{FP}}\)</span></li>
-<li><strong>Recall:</strong> The proportion of actual positives that are correctly classified as positive. It is calculated as <span class="math inline">\(\frac{\text{TP}}{\text{TP} + \text{FN}}\)</span>. ### Trade-offs between ROC and PR Curves:</li>
+<li>The Area Under the ROC Curve (AUC-ROC) summarizes the performance of the model, with a higher AUC indicating better discrimination.</li>
+</ul>
+</section>
+<section id="interpretation-of-precision-recall-curve-and-its-components" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-of-precision-recall-curve-and-its-components">Interpretation of Precision-Recall Curve and Its Components:</h3>
+<p>The Precision-Recall (PR) curve illustrates the trade-off between precision (positive predictive value) and recall (sensitivity) at different classification thresholds. - <strong>Precision:</strong> The proportion of predicted positives that are true positives. It is calculated as <span class="math inline">\(\frac{\text{TP}}{\text{TP} + \text{FP}}\)</span> - <strong>Recall:</strong> The proportion of actual positives that are correctly classified as positive. It is calculated as <span class="math inline">\(\frac{\text{TP}}{\text{TP} + \text{FN}}\)</span>.</p>
+</section>
+<section id="trade-offs-between-roc-and-pr-curves" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs-between-roc-and-pr-curves">Trade-offs between ROC and PR Curves:</h3>
+<ul>
 <li>ROC curves are insensitive to class imbalance and may provide an optimistic view of model performance when the negative class dominates.</li>
 <li>PR curves are more informative for imbalanced datasets as they focus on the positive class.</li>
 </ul>
@@ -262,7 +320,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="python-code-for-generating-roc-curves-pr-curves-and-confusion-matrix" class="level3">
 <h3 class="anchored" data-anchor-id="python-code-for-generating-roc-curves-pr-curves-and-confusion-matrix">Python Code for Generating ROC Curves, PR Curves, and Confusion Matrix</h3>
-<p>Let’s use the Breast Cancer Wisconsin dataset for this example. We’ll showcase Python code to generate ROC curves, Precision-Recall curves, and a Confusion Matrix using scikit-learn and matplotlib. This code does the following: 1. <strong>Trains classifiers.</strong> 2. <strong>Generate and plot the ROC Curve with AUC value.</strong> 3. <strong>Generate and plot the Precision-Recall Curve with average precision (AP) value.</strong> 4. <strong>Generate and plot the Confusion Matrix as a heatmap.</strong></p>
+<p>Let’s use the Breast Cancer Wisconsin dataset for this example. We’ll showcase Python code to generate ROC curves, Precision-Recall curves, and a Confusion Matrix using scikit-learn and matplotlib. This code does the following:</p>
+<ul>
+<li><ol type="1">
+<li><strong>Trains classifiers.</strong></li>
+</ol></li>
+<li><ol start="2" type="1">
+<li><strong>Generate and plot the ROC Curve with AUC value.</strong></li>
+</ol></li>
+<li><ol start="3" type="1">
+<li><strong>Generate and plot the Precision-Recall Curve with average precision (AP) value.</strong></li>
+</ol></li>
+<li><ol start="4" type="1">
+<li><strong>Generate and plot the Confusion Matrix as a heatmap.</strong></li>
+</ol></li>
+</ul>
 <p>The three subplots show the ROC Curve, Precision-Recall Curve, and Confusion Matrix, providing a comprehensive evaluation of three different classifiers on the Breast Cancer dataset.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary libraries</span></span>
@@ -611,39 +683,8 @@ weighted avg       0.96      0.96      0.96       114
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>In this comprehensive blog post, we delved into the fundamental aspects of evaluating classification models in machine learning, focusing on key metrics like ROC Curve, Precision-Recall Curve, and the Confusion Matrix. We commenced with a foundational understanding of classification, highlighting its applications in diverse fields such as spam detection and medical diagnosis. The overview of performance metrics shed light on the importance of model evaluation, emphasizing the repercussions of inaccurate predictions on real-world outcomes.</p>
-<p>The interpretation of ROC and Precision-Recall curves showcased their unique perspectives on model performance, emphasizing trade-offs between sensitivity, specificity, precision, and recall. The discussion on the Confusion Matrix elucidated its pivotal role in breaking down predictions into True Positives, True Negatives, False Positives, and False Negatives, offering a granular assessment of a model’s capabilities. The provided Python code demonstrated practical implementation using scikit-learn and matplotlib, utilizing the Breast Cancer Wisconsin dataset and a Support Vector Machine classifier as illustrative examples.</p>
-<p>Real-world examples, including Email Spam Detection and Handwritten Digit Recognition, further underscored the relevance of thoughtful model evaluation in practical applications. The comparison and contrast of ROC and Precision-Recall curves provided insights into choosing the most appropriate metric based on specific problem contexts. In conclusion, the blog post advocated for a nuanced understanding of classification evaluation metrics, promoting continuous learning and exploration to build robust and reliable machine learning models.</p>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot ROC and PR Curves</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ROC Curve</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>plt.plot(fpr, tpr, color<span class="op">=</span><span class="st">'red'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f'SVM ROC Curve (AUC = </span><span class="sc">{</span>roc_auc<span class="sc">:.4f}</span><span class="ss">)'</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>plt.plot(rf_fpr, rf_tpr, color<span class="op">=</span><span class="st">'blue'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f'RF ROC Curve (AUC = </span><span class="sc">{</span>roc_auc<span class="sc">:.4f}</span><span class="ss">)'</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>plt.plot(knn_fpr, knn_tpr, color<span class="op">=</span><span class="st">'darkorange'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f'KNN ROC Curve (AUC = </span><span class="sc">{</span>roc_auc<span class="sc">:.4f}</span><span class="ss">)'</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>], color<span class="op">=</span><span class="st">'navy'</span>, lw<span class="op">=</span><span class="dv">2</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'False Positive Rate'</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'True Positive Rate'</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Receiver Operating Characteristic (ROC) Curve'</span>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># PR Curve</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>plt.step(knn_recall, knn_precision, color<span class="op">=</span><span class="st">'b'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, where<span class="op">=</span><span class="st">'post'</span>)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>plt.fill_between(knn_recall, knn_precision, step<span class="op">=</span><span class="st">'post'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>plt.step(recall, precision, color<span class="op">=</span><span class="st">'r'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, where<span class="op">=</span><span class="st">'post'</span>)</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>plt.fill_between(recall, precision, step<span class="op">=</span><span class="st">'post'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>plt.step(rf_recall, rf_precision, color<span class="op">=</span><span class="st">'g'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, where<span class="op">=</span><span class="st">'post'</span>)</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>plt.fill_between(rf_recall, rf_precision, step<span class="op">=</span><span class="st">'post'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, color<span class="op">=</span><span class="st">'g'</span>)</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Recall'</span>)</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Precision'</span>)</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f'Precision-Recall Curve (AP = </span><span class="sc">{</span>average_precision<span class="sc">:.2f}</span><span class="ss">)'</span>)</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-14-output-1.png" width="1142" height="374"></p>
-</div>
-</div>
+<p>The interpretation of ROC and Precision-Recall curves showcased their unique perspectives on model performance, emphasizing trade-offs between sensitivity, specificity, precision, and recall. The discussion on the Confusion Matrix elucidated its pivotal role in breaking down predictions into True Positives, True Negatives, False Positives, and False Negatives, offering a granular assessment of a model’s capabilities. The provided Python code demonstrated practical implementation using scikit-learn and matplotlib, utilizing the Breast Cancer Wisconsin dataset and three different classifiers as illustrative examples.</p>
+<p>In conclusion, the blog post advocated for a breif understanding of classification evaluation metrics, promoting continuous learning and exploration to build robust and reliable machine learning models.</p>
 
 
 </section>
@@ -886,4 +927,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Waris-K/ML_blog/edit/main/posts/classification/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/Waris-K/ML_blog/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>
+</body></html>

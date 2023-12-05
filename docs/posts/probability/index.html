@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Learning Out Loud Machine Learning - Understanding Naive Bayes Algorithm</title>
+<title>ML_blogs - Understanding Naive Bayes Algorithm</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -73,11 +74,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 20,
   "language": {
     "search-no-results-text": "No results",
@@ -102,11 +103,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="fullcontent">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ML_blogs</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../warisk@vt.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/war_is11" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../www.linkedin.com/in/waris-khan-s" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
@@ -131,14 +172,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>It is an algorithm that learns the probability of every object, its features, and which groups they belong to. It is also known as a probabilistic classifier. The Naive Bayes Algorithm comes under supervised learning and is mainly used to solve classification problems.</p>
-<p>For example, you cannot identify a bird based on its features and color as there are many birds with similar attributes. But, you make a probabilistic prediction about the same, and that is where the Naive Bayes Algorithm comes in. <img src="attachment:naive_bayes_icon.png" class="img-fluid" alt="naive_bayes_icon.png"> ## Probability, Bayes Theory, and Conditional Probability Probability is the base for the Naive Bayes algorithm. This algorithm is built based on the probability results that it can offer for unsolvable problems with the help of prediction. You can learn more about probability, Bayes theory, and conditional probability below: ### Probability Probability helps to predict an event’s occurrence out of all the potential outcomes. The mathematical equation for probability is as follows: <span class="math display">\[ P(E) = \frac{No. of events}{ Total no. of outcomes}\]</span> <span class="math display">\[ 0\le P(E)\le1\]</span> The favorable outcome denotes the event that results from the probability. Probability is always between 0 and 1, where 0 means no probability of it happening, and 1 means the success rate of that event is likely.</p>
-<p>For better understanding, you can also consider a case where you predict a fruit based on its color and texture. Here are some possible assumptions that you can make. You can either choose the correct fruit that you have in mind or get confused with similar fruits and make mistakes. Either way, the probability of choosing the right fruit is 50%. ### Bayes Theory Bayes Theory works on coming to a hypothesis (H) from a given set of evidence (E). It relates to two things: the probability of the hypothesis before the evidence P(H) and the probability after the evidence P(H|E). The Bayes Theory is explained by the following equation: <span class="math display">\[ P(H|E) = \frac{P(E|H)*P(H)}{P(E)}\]</span> Where, - <span class="math inline">\(P(H|E)\)</span> denotes how event H happens when event E takes place. - <span class="math inline">\(P(E|H)\)</span> represents how often event E happens when event H takes place first. - <span class="math inline">\(P(H)\)</span> represents the probability of event X happening on its own. - <span class="math inline">\(P(E)\)</span> represents the probability of event Y happening on its own.</p>
-<p>The Bayes Rule is a method for determining <span class="math inline">\(P(H|E)\)</span> from <span class="math inline">\(P(E|H)\)</span>. In short, it provides you with a way of calculating the probability of a hypothesis with the provided evidence. ### Conditional Probability Conditional probability is a subset of probability. It reduces the probability of becoming dependent on a single event. You can compute the conditional probability for two or more occurrences.</p>
-<p>When you take events X and Y, the conditional probability of event Y is defined as the probability that the event occurs when event X is already over. It is written as P(Y|X). The mathematical formula for this is as follows: <span class="math display">\[P(Y|A) = \frac{P(X and Y)}{P(X)}\]</span> ### Bayesian Probability Bayesian Probability allows to calculate the conditional probabilities. It enables to use of partial knowledge for calculating the probability of the occurrence of a specific event. This algorithm is used for developing models for prediction and classification problems like Naive Bayes.</p>
+<p>For example, we cannot identify a bird based on its features and color as there are many birds with similar attributes. But, we make a probabilistic prediction about the same, and that is where the Naive Bayes Algorithm comes in.</p>
+<section id="probability-bayes-theory-and-conditional-probability" class="level2">
+<h2 class="anchored" data-anchor-id="probability-bayes-theory-and-conditional-probability">Probability, Bayes Theory, and Conditional Probability</h2>
+<p>Probability is the base for the Naive Bayes algorithm. This algorithm is built based on the probability results that it can offer for unsolvable problems with the help of prediction.</p>
+<section id="probability" class="level3">
+<h3 class="anchored" data-anchor-id="probability">Probability</h3>
+<p>Probability helps to predict an event’s occurrence out of all the potential outcomes. The mathematical equation for probability is as follows: <span class="math display">\[ P(E) = \frac{No. of events}{ Total no. of outcomes}\]</span> <span class="math display">\[ 0\le P(E)\le1\]</span> The favorable outcome denotes the event that results from the probability. Probability is always between 0 and 1, where 0 means no probability of it happening, and 1 means the success rate of that event is likely.</p>
+<p>For better understanding, you can also consider a case where you predict a fruit based on its color and texture. Here are some possible assumptions that you can make. You can either choose the correct fruit that you have in mind or get confused with similar fruits and make mistakes. Either way, the probability of choosing the right fruit is 50%.</p>
+</section>
+<section id="bayes-theory" class="level3">
+<h3 class="anchored" data-anchor-id="bayes-theory">Bayes Theory</h3>
+<p>Bayes Theory works on coming to a hypothesis (H) from a given set of evidence (E). It relates to two things: the probability of the hypothesis before the evidence P(H) and the probability after the evidence P(H|E). The Bayes Theory is explained by the following equation: <span class="math display">\[ P(H|E) = \frac{P(E|H)*P(H)}{P(E)}\]</span> Where, - <span class="math inline">\(P(H|E)\)</span> denotes how event H happens when event E takes place. - <span class="math inline">\(P(E|H)\)</span> represents how often event E happens when event H takes place first. - <span class="math inline">\(P(H)\)</span> represents the probability of event X happening on its own. - <span class="math inline">\(P(E)\)</span> represents the probability of event Y happening on its own.</p>
+<p>The Bayes Rule is a method for determining <span class="math inline">\(P(H|E)\)</span> from <span class="math inline">\(P(E|H)\)</span>. In short, it provides you with a way of calculating the probability of a hypothesis with the provided evidence.</p>
+</section>
+<section id="conditional-probability" class="level3">
+<h3 class="anchored" data-anchor-id="conditional-probability">Conditional Probability</h3>
+<p>Conditional probability is a subset of probability. It reduces the probability of becoming dependent on a single event. You can compute the conditional probability for two or more occurrences.</p>
+<p>When you take events X and Y, the conditional probability of event Y is defined as the probability that the event occurs when event X is already over. It is written as P(Y|X). The mathematical formula for this is as follows: <span class="math display">\[P(Y|A) = \frac{P(X and Y)}{P(X)}\]</span></p>
+</section>
+<section id="bayesian-probability" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-probability">Bayesian Probability</h3>
+<p>Bayesian Probability allows to calculate the conditional probabilities. It enables to use of partial knowledge for calculating the probability of the occurrence of a specific event. This algorithm is used for developing models for prediction and classification problems like Naive Bayes.</p>
 <p>The Bayesian Rule is used in probability theory for computing - conditional probabilities. What is important is that you cannot discover just how the evidence will impact the probability of an event occurring, but you can find the exact probability.</p>
 <section id="how-naive-bayes-classifier-works" class="level4">
 <h4 class="anchored" data-anchor-id="how-naive-bayes-classifier-works">How Naive Bayes Classifier works?</h4>
-<p>We will now try to build a classification model that uses Sklearn to see how the Naive Bayes Classifier works. For instance, we will train a Naive Bayes algorithm on the famous Iris Dataset. The objective of our algorithm would be to classify flowers into three categories Setosa, Versicolor, and Virginica. ##### 1. Import basic libraries</p>
+<p>We will now try to build a classification model that uses Sklearn to see how the Naive Bayes Classifier works. For instance, we will train a Naive Bayes algorithm on the famous Iris Dataset. The objective of our algorithm would be to classify flowers into three categories Setosa, Versicolor, and Virginica.</p>
+<section id="import-basic-libraries" class="level5">
+<h5 class="anchored" data-anchor-id="import-basic-libraries">1. Import basic libraries</h5>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -146,6 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 <section id="load-the-dataset-and-visualise-it" class="level5">
 <h5 class="anchored" data-anchor-id="load-the-dataset-and-visualise-it">2. Load the dataset and visualise it</h5>
 <div class="cell" data-execution_count="2">
@@ -176,7 +238,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="index_files/figure-html/cell-4-output-1.png" width="648" height="520"></p>
 </div>
 </div>
-<p>We can see that the features are highly correlated. But as per Naive Bayes assumption, it will treat features as entirely independent of each other. ##### 3. Split the dataset</p>
+<p>We can see that the features are highly correlated. But as per Naive Bayes assumption, it will treat features as entirely independent of each other.</p>
+</section>
+<section id="split-the-dataset" class="level5">
+<h5 class="anchored" data-anchor-id="split-the-dataset">3. Split the dataset</h5>
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test<span class="op">=</span> train_test_split(X,y,test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -218,9 +283,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
+</section>
 <section id="types-of-naive-bayes-model" class="level3">
 <h3 class="anchored" data-anchor-id="types-of-naive-bayes-model">Types of Naive Bayes Model</h3>
-<p>There are four types of the Naive Bayes Model, which are explained below: <img src="attachment:image.png" class="img-fluid" alt="image.png"></p>
+<p>There are four types of the Naive Bayes Model, which are explained below:</p>
 <section id="gaussian-naive-bayes" class="level4">
 <h4 class="anchored" data-anchor-id="gaussian-naive-bayes">1. Gaussian Naive Bayes</h4>
 <p>It is a straightforward algorithm used when the attributes are continuous. The attributes present in the data should follow the rule of Gaussian distribution or normal distribution. It remarkably quickens the search, and under lenient conditions, the error will be two times greater than Optimal Naive Bayes.</p>
@@ -242,24 +308,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="advantages-of-a-naive-bayes-classifier">Advantages of a Naive Bayes Classifier</h3>
 <p>Here are some advantages of the Naive Bayes Classifier:</p>
 <ul>
-<li><p>It doesn’t require larger amounts of training data.</p></li>
-<li><p>It is straightforward to implement.</p></li>
-<li><p>Convergence is quicker than other models, which are discriminative.</p></li>
-<li><p>It is highly scalable with several data points and predictors.</p></li>
-<li><p>It can handle both continuous and categorical data.</p></li>
-<li><p>It is not sensitive to irrelevant data and doesn’t follow the assumptions it holds.</p></li>
-<li><p>It is used in real-time predictions. ### Disadvantages of a Naive Bayes Classifier The disadvantage of the Naive Bayes Classifier are as below:</p></li>
-<li><p>The Naive Bayes Algorithm has trouble with the ‘zero-frequency problem’. It happens when you assign zero probability for categorical variables in the training dataset that is not available. When you use a smooth method for overcoming this problem, you can make it work the best.</p></li>
-<li><p>It will assume that all the attributes are independent, which rarely happens in real life. It will limit the application of this algorithm in real-world situations.</p></li>
-<li><p>It will estimate things wrong sometimes, so you shouldn’t take its probability outputs seriously. ### Applications that use Naive Bayes The Naive Bayes Algorithm is used for various real-world problems like those below:</p></li>
-<li><p><strong>Text classification:</strong> The Naive Bayes Algorithm is used as a probabilistic learning technique for text classification. It is one of the best-known algorithms used for document classification of one or many classes.</p></li>
-<li><p><strong>Sentiment analysis:</strong> The Naive Bayes Algorithm is used to analyze sentiments or feelings, whether positive, neutral, or negative.</p></li>
-<li><p><strong>Recommendation system:</strong> The Naive Bayes Algorithm is a collection of collaborative filtering issued for building hybrid recommendation systems that assist you in predicting whether a user will receive any resource.</p></li>
-<li><p><strong>Spam filtering:</strong> It is also similar to the text classification process. It is popular for helping you determine if the mail you receive is spam.</p></li>
-<li><p><strong>Medical diagnosis:</strong> This algorithm is used in medical diagnosis and helps you to predict the patient’s risk level for certain diseases.</p></li>
-<li><p><strong>Weather prediction:</strong> You can use this algorithm to predict whether the weather will be good.</p></li>
-<li><p><strong>Face recognition:</strong> This helps you identify faces. ## Conclusion Though the Naive Bayes Algorithm has a lot of limitations, it is still the most chosen algorithm for solving classification problems because of its simplicity. It works well on spam filtering and the classification of documents. It has the highest rate of success when compared to other algorithms because of its speed and efficiency.</p></li>
+<li>It doesn’t require larger amounts of training data.</li>
+<li>It is straightforward to implement.</li>
+<li>Convergence is quicker than other models, which are discriminative.</li>
+<li>It is highly scalable with several data points and predictors.</li>
+<li>It can handle both continuous and categorical data.</li>
+<li>It is not sensitive to irrelevant data and doesn’t follow the assumptions it holds.</li>
+<li>It is used in real-time predictions.</li>
 </ul>
+</section>
+<section id="disadvantages-of-a-naive-bayes-classifier" class="level3">
+<h3 class="anchored" data-anchor-id="disadvantages-of-a-naive-bayes-classifier">Disadvantages of a Naive Bayes Classifier</h3>
+<p>The disadvantage of the Naive Bayes Classifier are as below:</p>
+<ul>
+<li>The Naive Bayes Algorithm has trouble with the ‘zero-frequency problem’. It happens when you assign zero probability for categorical variables in the training dataset that is not available. When you use a smooth method for overcoming this problem, you can make it work the best.</li>
+<li>It will assume that all the attributes are independent, which rarely happens in real life. It will limit the application of this algorithm in real-world situations.</li>
+<li>It will estimate things wrong sometimes, so you shouldn’t take its probability outputs seriously.</li>
+</ul>
+</section>
+<section id="applications-that-use-naive-bayes" class="level3">
+<h3 class="anchored" data-anchor-id="applications-that-use-naive-bayes">Applications that use Naive Bayes</h3>
+<p>The Naive Bayes Algorithm is used for various real-world problems like those below:</p>
+<ul>
+<li><strong>Text classification:</strong> The Naive Bayes Algorithm is used as a probabilistic learning technique for text classification. It is one of the best-known algorithms used for document classification of one or many classes.</li>
+<li><strong>Sentiment analysis:</strong> The Naive Bayes Algorithm is used to analyze sentiments or feelings, whether positive, neutral, or negative.</li>
+<li><strong>Recommendation system:</strong> The Naive Bayes Algorithm is a collection of collaborative filtering issued for building hybrid recommendation systems that assist you in predicting whether a user will receive any resource.</li>
+<li><strong>Spam filtering:</strong> It is also similar to the text classification process. It is popular for helping you determine if the mail you receive is spam.</li>
+<li><strong>Medical diagnosis:</strong> This algorithm is used in medical diagnosis and helps you to predict the patient’s risk level for certain diseases.</li>
+<li><strong>Weather prediction:</strong> You can use this algorithm to predict whether the weather will be good.</li>
+<li><strong>Face recognition:</strong> This helps you identify faces.</li>
+</ul>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Though the Naive Bayes Algorithm has a lot of limitations, it is still the most chosen algorithm for solving classification problems because of its simplicity. It works well on spam filtering and the classification of documents. It has the highest rate of success when compared to other algorithms because of its speed and efficiency.</p>
 
 
 </section>
@@ -502,4 +585,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Waris-K/ML_blog/edit/main/posts/probability/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/Waris-K/ML_blog/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>
+</body></html>

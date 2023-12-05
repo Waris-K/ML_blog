@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Learning Out Loud Machine Learning - Understanding Regression Analysis with Linear and Nonlinear Models</title>
+<title>ML_blogs - Understanding Regression Analysis with Linear and Nonlinear Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -73,11 +74,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 20,
   "language": {
     "search-no-results-text": "No results",
@@ -102,11 +103,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="fullcontent">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ML_blogs</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../warisk@vt.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/war_is11" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../www.linkedin.com/in/waris-khan-s" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
@@ -130,7 +171,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Regression analysis is a statistical method that examines the relationship between a dependent variable and one or more independent variables. It seeks to model and quantify the strength and nature of this relationship. ### Purpose The primary purpose of regression analysis is to predict the value of the dependent variable based on the values of independent variables. This predictive capability makes it a valuable tool in various fields such as economics, finance, biology, and many more. ## Linear Regression: Theory, Formula, and Assumptions ### Theory Linear regression assumes a linear relationship between the dependent and independent variables. The model is represented as Y = β0 + β1X + ε, where Y is the dependent variable, X is the independent variable, β0 is the intercept, β1 is the slope, and ε is the error term. Sure, let’s walk through an example of linear regression using a real-world dataset, Python code, and a figure. We’ll use the well-known Boston Housing dataset, which is available in the scikit-learn library.</p>
+<p>Regression analysis is a statistical method that examines the relationship between a dependent variable and one or more independent variables. It seeks to model and quantify the strength and nature of this relationship.</p>
+<section id="purpose" class="level3">
+<h3 class="anchored" data-anchor-id="purpose">Purpose</h3>
+<p>The primary purpose of regression analysis is to predict the value of the dependent variable based on the values of independent variables. This predictive capability makes it a valuable tool in various fields such as economics, finance, biology, and many more.</p>
+</section>
+<section id="linear-regression-theory-formula-and-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-theory-formula-and-assumptions">Linear Regression: Theory, Formula, and Assumptions</h2>
+<section id="theory" class="level3">
+<h3 class="anchored" data-anchor-id="theory">Theory</h3>
+<p>Linear regression assumes a linear relationship between the dependent and independent variables. The model is represented as Y = β0 + β1X + ε, where Y is the dependent variable, X is the independent variable, β0 is the intercept, β1 is the slope, and ε is the error term. Sure, let’s walk through an example of linear regression using a real-world dataset, Python code, and a figure. We’ll use the well-known Boston Housing dataset, which is available in the scikit-learn library.</p>
 <section id="explanation" class="level4">
 <h4 class="anchored" data-anchor-id="explanation">Explanation:</h4>
 <ol type="1">
@@ -156,14 +206,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ol>
 </section>
-<section id="figure" class="level4">
-<h4 class="anchored" data-anchor-id="figure">Figure:</h4>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="attachment:image-2.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image-2.png</figcaption>
-</figure>
-</div>
 </section>
 <section id="formula" class="level3">
 <h3 class="anchored" data-anchor-id="formula">Formula</h3>
@@ -244,6 +286,7 @@ Root Mean Squared Error: 0.8085168605026132</code></pre>
 <li>We use matplotlib to create a scatter plot of the actual data points and plot the regression line calculated using the formulas.</li>
 </ul></li>
 </ol>
+</section>
 </section>
 <section id="interpretation-of-regression-coefficients" class="level2">
 <h2 class="anchored" data-anchor-id="interpretation-of-regression-coefficients">Interpretation of Regression Coefficients</h2>
@@ -385,14 +428,70 @@ Root Mean Squared Error: 0.8085168605026132</code></pre>
 <h2 class="anchored" data-anchor-id="nonlinear-regression-introduction-and-applications">Nonlinear Regression: Introduction and Applications</h2>
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>While linear regression assumes a linear relationship between variables, nonlinear regression models provide a more flexible framework by accommodating more complex patterns. In nonlinear regression, the relationship between the dependent and independent variables is expressed as a nonlinear function. This flexibility allows the model to capture intricate and curved relationships that linear models might miss. Nonlinear regression models are particularly useful when the underlying pattern in the data is not well-represented by a straight line. These models open the door to a wide range of possibilities, making them applicable to diverse fields such as physics, biology, economics, and engineering. ### Applications #### Physics: In physics, nonlinear regression is often used to model complex physical phenomena where the relationship between variables follows nonlinear laws. For example, modeling the trajectory of a projectile under the influence of air resistance involves nonlinear equations. #### Biology: Nonlinear regression is frequently applied in biology to model growth curves, enzyme kinetics, and other biological processes. #### Economics: Demand and Supply Modeling In economics, nonlinear regression is applied to model relationships involving demand and supply functions, production functions, and other economic phenomena. These relationships often exhibit nonlinear behavior due to factors like diminishing returns or economies of scale.</p>
+<p>While linear regression assumes a linear relationship between variables, nonlinear regression models provide a more flexible framework by accommodating more complex patterns. In nonlinear regression, the relationship between the dependent and independent variables is expressed as a nonlinear function. This flexibility allows the model to capture intricate and curved relationships that linear models might miss. Nonlinear regression models are particularly useful when the underlying pattern in the data is not well-represented by a straight line. These models open the door to a wide range of possibilities, making them applicable to diverse fields such as physics, biology, economics, and engineering.</p>
+</section>
+<section id="applications" class="level3">
+<h3 class="anchored" data-anchor-id="applications">Applications</h3>
+<section id="physics" class="level4">
+<h4 class="anchored" data-anchor-id="physics">Physics:</h4>
+<p>In physics, nonlinear regression is often used to model complex physical phenomena where the relationship between variables follows nonlinear laws. For example, modeling the trajectory of a projectile under the influence of air resistance involves nonlinear equations.</p>
+</section>
+<section id="biology" class="level4">
+<h4 class="anchored" data-anchor-id="biology">Biology:</h4>
+<p>Nonlinear regression is frequently applied in biology to model growth curves, enzyme kinetics, and other biological processes.</p>
+</section>
+<section id="economics-demand-and-supply-modeling" class="level4">
+<h4 class="anchored" data-anchor-id="economics-demand-and-supply-modeling">Economics: Demand and Supply Modeling</h4>
+<p>In economics, nonlinear regression is applied to model relationships involving demand and supply functions, production functions, and other economic phenomena. These relationships often exhibit nonlinear behavior due to factors like diminishing returns or economies of scale.</p>
+</section>
 </section>
 <section id="implementing-nonlinear-regression-using-decision-tree" class="level3">
 <h3 class="anchored" data-anchor-id="implementing-nonlinear-regression-using-decision-tree">Implementing Nonlinear Regression Using Decision Tree</h3>
 <section id="what-is-a-decision-tree" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-a-decision-tree">What is a Decision Tree?</h4>
-<p>A decision tree is one of the most frequently used Machine Learning algorithms for solving regression as well as classification problems. As the name suggests, the algorithm uses a tree-like model of decisions to either predict the target value (regression) or predict the target class (classification). Before diving into how decision trees work, first, let us be familiar with the basic terminologies of a decision tree: <img src="attachment:image.png" class="img-fluid" alt="image.png"> - <strong>Root Node:</strong> - This represents the topmost node of the tree that represents the whole data points. - <strong>Splitting:</strong> - It refers to dividing a node into two or more sub-nodes. - <strong>Decision Node:</strong> - They are the nodes that are further split into sub-nodes, i.e., this node that is split is called a decision node. - <strong>Leaf / Terminal Node:</strong> - Nodes that do not split are called Leaf or Terminal nodes. These nodes are often the final result of the tree. - <strong>Branch / Sub-Tree:</strong> - A subsection of the entire tree is called branch or sub-tree. - <strong>Parent and Child Node:</strong> - A node, which is divided into sub-nodes is called a parent node of sub-nodes whereas sub-nodes are the child of the parent node. In the figure above, the decision node is the parent of the terminal nodes (child). - <strong>Pruning:</strong> - Removing sub-nodes of a decision node is called pruning. Pruning is often done in decision trees to prevent overfitting. ### How does a Decision Tree work? The process of splitting starts at the root node and is followed by a branched tree that finally leads to a leaf node (terminal node) that contains the prediction or the final outcome of the algorithm. Construction of decision trees usually works top-down, by choosing a variable at each step that best splits the set of items. Each sub-tree of the decision tree model can be represented as a binary tree where a decision node splits into two nodes based on the conditions.</p>
-<p>Decision trees where the target variable or the terminal node can take continuous values (typically real numbers) are called regression trees which will be discussed in this lesson. If the target variable can take a discrete set of values these trees are called classification trees. ### Decision Tree Regression in Python We will now go through a step-wise Python implementation of the Decision Tree Regression algorithm that we just discussed. #### 1. Import necessary libraries</p>
+<p>A decision tree is one of the most frequently used Machine Learning algorithms for solving regression as well as classification problems. As the name suggests, the algorithm uses a tree-like model of decisions to either predict the target value (regression) or predict the target class (classification). Before diving into how decision trees work, first, let us be familiar with the basic terminologies of a decision tree:</p>
+<ul>
+<li><strong>Root Node:</strong>
+<ul>
+<li>This represents the topmost node of the tree that represents the whole data points.</li>
+</ul></li>
+<li><strong>Splitting:</strong>
+<ul>
+<li>It refers to dividing a node into two or more sub-nodes.</li>
+</ul></li>
+<li><strong>Decision Node:</strong>
+<ul>
+<li>They are the nodes that are further split into sub-nodes, i.e., this node that is split is called a decision node.</li>
+</ul></li>
+<li><strong>Leaf / Terminal Node:</strong>
+<ul>
+<li>Nodes that do not split are called Leaf or Terminal nodes. These nodes are often the final result of the tree.</li>
+</ul></li>
+<li><strong>Branch / Sub-Tree:</strong>
+<ul>
+<li>A subsection of the entire tree is called branch or sub-tree.</li>
+</ul></li>
+<li><strong>Parent and Child Node:</strong>
+<ul>
+<li>A node, which is divided into sub-nodes is called a parent node of sub-nodes whereas sub-nodes are the child of the parent node. In the figure above, the decision node is the parent of the terminal nodes (child).</li>
+</ul></li>
+<li><strong>Pruning:</strong>
+<ul>
+<li>Removing sub-nodes of a decision node is called pruning. Pruning is often done in decision trees to prevent overfitting.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="how-does-a-decision-tree-work" class="level3">
+<h3 class="anchored" data-anchor-id="how-does-a-decision-tree-work">How does a Decision Tree work?</h3>
+<p>The process of splitting starts at the root node and is followed by a branched tree that finally leads to a leaf node (terminal node) that contains the prediction or the final outcome of the algorithm. Construction of decision trees usually works top-down, by choosing a variable at each step that best splits the set of items. Each sub-tree of the decision tree model can be represented as a binary tree where a decision node splits into two nodes based on the conditions.</p>
+<p>Decision trees where the target variable or the terminal node can take continuous values (typically real numbers) are called regression trees which will be discussed in this lesson. If the target variable can take a discrete set of values these trees are called classification trees.</p>
+</section>
+<section id="decision-tree-regression-in-python" class="level3">
+<h3 class="anchored" data-anchor-id="decision-tree-regression-in-python">Decision Tree Regression in Python</h3>
+<p>We will now go through a step-wise Python implementation of the Decision Tree Regression algorithm that we just discussed.</p>
+<section id="import-necessary-libraries" class="level4">
+<h4 class="anchored" data-anchor-id="import-necessary-libraries">1. Import necessary libraries</h4>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the libraries</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np <span class="co"># for array operations</span></span>
@@ -537,7 +636,6 @@ RMSE:  131.142</code></pre>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>export_graphviz(model, out_file <span class="op">=</span><span class="st">'tree_structure.dot'</span>, </span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>               feature_names <span class="op">=</span>[<span class="st">'Petrol_tax'</span>, <span class="st">'Average_income'</span>, <span class="st">'Paved_Highways'</span>, <span class="st">'Population_Driver_licence(%)'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The image will look like this: <img src="attachment:image.png" class="img-fluid" alt="image.png"></p>
 </section>
 </section>
 </section>
@@ -786,4 +884,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Waris-K/ML_blog/edit/main/posts/regression/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/Waris-K/ML_blog/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>
+</body></html>

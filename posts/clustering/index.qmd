@@ -295,88 +295,8 @@ By identifying clusters, analysts gain insights into the underlying structure of
 Clustering provides a foundation for advanced analytics and machine learning applications, contributing to the broader field of data science by enhancing the interpretability and utility of complex datasets.
 
 ## Conclusion
-In the exploration of Density-Based Spatial Clustering of Applications with Noise (DBSCAN), a foundational clustering algorithm in machine learning, we navigated through its key concepts and practical applications. DBSCAN, distinct for its density-based approach, sets itself apart from traditional methods like K-Means by adeptly identifying arbitrary cluster shapes and handling noise effectively. The algorithm's core concepts, including Epsilon, MinPoints, Core Points, Border Points, and Noise, were dissected, providing insights into its step-by-step functioning and the impact of parameter choices on clustering outcomes.
 
 The significance of clustering in machine learning was underscored, highlighting its pivotal role in tasks such as customer segmentation, anomaly detection, and image segmentation. Scatter plots emerged as invaluable visual tools, aiding in the interpretation of clustering results and offering a means to distinguish clusters, identify outliers, and validate clustering performance. This included generating scatter plots to visualize the clustering outcomes, emphasizing the algorithm's applicability in real-world scenarios such as customer segmentation for targeted marketing using the Online Retail Data.
 
 In summary, the exploration of DBSCAN illuminated its strengths, practical applications, and the nuanced interplay of its parameters in shaping clustering results. The provided Python code and visualizations offer a hands-on approach for readers to delve into the power of DBSCAN and clustering techniques, encouraging further exploration and application in their own machine learning projects.
-
-```{python}
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn import datasets
-from sklearn.cluster import KMeans, AgglomerativeClustering, DBSCAN
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-from sklearn.metrics import silhouette_score
-
-# Load Iris dataset
-iris = datasets.load_iris()
-X = iris.data
-y = iris.target
-
-# Standardize the data
-X_std = StandardScaler().fit_transform(X)
-
-# Apply PCA for visualization
-pca = PCA(n_components=2)
-X_pca = pca.fit_transform(X_std)
-
-# K-Means clustering
-kmeans = KMeans(n_clusters=2, random_state=42)
-kmeans_labels = kmeans.fit_predict(X_std)
-
-# Agglomerative Hierarchical Clustering
-agg_clustering = AgglomerativeClustering(n_clusters=3)
-agg_labels = agg_clustering.fit_predict(X_std)
-
-# DBSCAN clustering
-dbscan = DBSCAN(eps=0.5, min_samples=4)
-dbscan_labels = dbscan.fit_predict(X_std)
-
-# Silhouette Scores for evaluation
-kmeans_silhouette = silhouette_score(X_std, kmeans_labels)
-agg_silhouette = silhouette_score(X_std, agg_labels)
-dbscan_silhouette = silhouette_score(X_std, dbscan_labels)
-
-# Plotting results
-plt.figure(figsize=(15, 5))
-
-# K-Means
-plt.subplot(131)
-plt.scatter(X_pca[:, 0], X_pca[:, 1], c=kmeans_labels, cmap='viridis', edgecolors='k')
-plt.title(f'K-Means (Silhouette Score: {kmeans_silhouette:.2f})')
-plt.xlabel('Principal Component 1')
-plt.ylabel('Principal Component 2')
-
-# Agglomerative Hierarchical Clustering
-plt.subplot(132)
-plt.scatter(X_pca[:, 0], X_pca[:, 1], c=agg_labels, cmap='viridis', edgecolors='k')
-plt.title(f'Agglomerative (Silhouette Score: {agg_silhouette:.2f})')
-plt.xlabel('Principal Component 1')
-plt.ylabel('Principal Component 2')
-
-# DBSCAN
-plt.subplot(133)
-plt.scatter(X_pca[:, 0], X_pca[:, 1], c=dbscan_labels, cmap='viridis', edgecolors='k')
-plt.title(f'DBSCAN (Silhouette Score: {dbscan_silhouette:.2f})')
-plt.xlabel('Principal Component 1')
-plt.ylabel('Principal Component 2')
-
-plt.tight_layout()
-plt.show()
-```
-
-```{python}
-!pwd
-```
-
-```{python}
-%pwd
-```
-
-```{python}
-%ls
-```
-
 

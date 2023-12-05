@@ -2,9 +2,17 @@ project:
   type: website
   output-dir: docs
 website:
-  title: "Learning Out Loud Machine Learning"
-  repo-url: https://github.com/Waris-K/ML_blog
-  repo-actions: [edit, issue]
+  title: "ML_blogs"
+  navbar:
+    right:
+      - about.qmd
+      - icon: envelope
+        href: warisk@vt.edu
+      - icon: twitter
+        href: https://twitter.com/war_is11
+      - icon: linkedin
+        href: www.linkedin.com/in/waris-khan-s
+
 format:
   html:
     theme: cosmo

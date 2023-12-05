@@ -115,8 +115,10 @@ where:
 -  $\beta_0$  is the intercept.
 - $\beta_1$  is the slope.
 -  $\varepsilon$ is the error term.
+
 ### 1. **Interpretation of Slope ($\beta_1$):**
    - The slope $\beta_1$ represents the change in the dependent variable (Y) for a one-unit change in the independent variable (X). 
+   
 ### 2. **Interpretation of Intercept ($\beta_0$):**
    - The intercept $\beta_0$ represents the predicted value of the dependent variable (Y) when the independent variable (X) is zero. 
   - The intercept provides a baseline value for the dependent variable when all independent variables are zero. In many cases, this baseline might not have a meaningful interpretation in the context of the problem.

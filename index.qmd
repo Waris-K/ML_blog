@@ -1,5 +1,5 @@
 ---
-title: "Machine Learning : Learning Out Load"
+title: "Machine Learning : Learning Out Loud"
 listing:
   contents: posts
   sort: "date desc"
